@@ -74,6 +74,8 @@ SELECT * FROM users WHERE age = 30;
 
 ### Add an index to age column
 
+#### Note: Index `age` is bad candidate since many people share same age. We are only using it make our experiment simpler.
+
 ```
 CREATE INDEX user_age on users(age);
 ```
@@ -97,3 +99,9 @@ Output:
 
 1. Query ran using the Index "user_age"
 2. Execution time reduced from 26.157ms --> 6.460ms
+
+### Conclusions
+
+1. Postgres used Parallel workers to run a sequential scan (when no index defined)
+2. When a index is defined it uses a Bitmap Index Scan
+3. Execution time reduced from 26.157ms --> 6.460ms using an index
