@@ -74,7 +74,7 @@ SELECT * FROM users WHERE age = 30;
 
 ### Add an index to age column
 
-#### Note: Index `age` is bad candidate since many people share same age. We are only using it make our experiment simpler.
+#### Note: Index `age` is bad candidate since many people share the same age. We are only using it to make our experiment simpler.
 
 ```
 CREATE INDEX user_age on users(age);
