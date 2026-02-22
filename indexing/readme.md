@@ -105,3 +105,4 @@ Output:
 1. Postgres used Parallel workers to run a sequential scan (when no index defined)
 2. When a index is defined it uses a Bitmap Index Scan
 3. Execution time reduced from 26.157ms --> 6.460ms using an index
+4. 4x improvement is noticed even when choosing a bad candidate for an index. Think about the perf gains when indexing is used correctly.
