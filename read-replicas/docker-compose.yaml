@@ -1,0 +1,26 @@
+services:
+  primary:
+    image: postgres:latest
+    container_name: primary
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+    volumes:
+      - primary:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  replica:
+    image: postgres:latest
+    container_name: replica
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+    volumes:
+      - replica:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+
+volumes:
+  primary:
+  replica:
