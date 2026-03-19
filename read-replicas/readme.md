@@ -110,7 +110,7 @@ ERROR:  cannot execute INSERT in a read-only transaction
 ### Conclusion
 
 - This doesn't end here. The replica is using WAL and running the transaction independently.
-- If the number of transaction grows, the time taken to re-run the transactions on the replica will lag behind.
+- With higher transaction volume, the replica falls behind because it takes more time to replay WAL changes.
 - The diff between primary and replica might grow known as replication lag.
 
 ### Side notes:
