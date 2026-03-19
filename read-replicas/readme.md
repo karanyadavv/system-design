@@ -39,6 +39,7 @@ CREATE ROLE replicator WITH REPLICATION LOGIN PASSWORD 'replica_pass';
 - Adding below line, tells the primary db to allow a connection to the replica
 - Specify that this is not a normal connection, it's a `replication` with the user name `replicator`
 - allowing from any IP and asking for a password
+- Add the line below to the end of the `/primary/pg_hba.conf`
 
 ```
 host replication replicator 0.0.0.0/0 md5
@@ -105,6 +106,12 @@ Output:
 ```
 ERROR:  cannot execute INSERT in a read-only transaction
 ```
+
+### Conclusion
+
+- This doesn't end here. The replica is using WAL and running the transaction independently.
+- If the number of transaction grows, the time taken to re-run the transactions on the replica will lag behind.
+- The diff between primary and replica might grow known as replication lag.
 
 ### Side notes:
 
