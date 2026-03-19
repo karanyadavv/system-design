@@ -44,7 +44,7 @@ CREATE ROLE replicator WITH REPLICATION LOGIN PASSWORD 'replica_pass';
 host replication replicator 0.0.0.0/0 md5
 ```
 
-### run basebackup
+### Run basebackup
 
 https://www.postgresql.org/docs/current/app-pgbasebackup.html
 
@@ -58,7 +58,7 @@ rm .\replica\*
 
 Now run the base backup:
 
-The command below will work on Windows Powershell. If you are using bash, replace the tilda with backlash and you should be good
+The command below will work on Windows Powershell. If you are using bash, replace the backtick with backslash and you should be good
 
 ```
 docker run --rm `
@@ -83,7 +83,6 @@ Insert into primary:
 ```
 CREATE TABLE users(id SERIAL PRIMARY KEY, name VARCHAR(255));
 INSERT INTO users(name) VALUES('Karan');
-
 ```
 
 Connect to replica:
