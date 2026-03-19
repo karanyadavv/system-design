@@ -109,7 +109,7 @@ Output:
 
 ### Some more important things to know
 
-1. Whenever postgres is trying to read data, it finds a block (fixed sized blocks: pages) where the data resides. 
+1. Whenever postgres is trying to read data, it finds a block (fixed sized blocks: pages) where the data resides.
 2. Loads it into a buffer known as a **Shared Buffer Pool**, reads the data.
 3. Get's rid of the data only when it needs to (generally defined in a buffer replacement policy)
 4. Using this shared buffer pool so that hot data can stay in memory and avoid disk entirely in subsequent calls. Until obviously, when the replacement policy kicks in and data is evicted.
